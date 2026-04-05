@@ -61,26 +61,11 @@
     .nav-logo {
       display: flex;
       align-items: center;
-      gap: 10px;
       text-decoration: none;
     }
-    .nav-logo .tooth-icon {
-      font-size: 28px;
-      color: var(--orange);
-    }
-    .nav-logo span {
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--dark);
-      line-height: 1.2;
-    }
-    .nav-logo span small {
-      display: block;
-      font-size: 0.65rem;
-      font-weight: 400;
-      color: var(--orange);
-      letter-spacing: 1px;
-      text-transform: uppercase;
+    .nav-logo img {
+      height: 52px;
+      width: auto;
     }
 
     .nav-links {
@@ -841,10 +826,12 @@
       margin: 0 auto;
     }
     .footer-logo {
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--orange);
       margin-bottom: 12px;
+    }
+    .footer-logo img {
+      height: 50px;
+      width: auto;
+      filter: brightness(0) invert(1);
     }
     footer p { font-size: 0.82rem; line-height: 1.8; }
     footer a { color: var(--orange-light); text-decoration: none; }
@@ -900,8 +887,7 @@
 <!-- NAVBAR -->
 <nav id="navbar">
   <a href="#inicio" class="nav-logo">
-    <span class="tooth-icon">🦷</span>
-    <span>Sonrisa Ideal<small>Clínica Odontológica</small></span>
+    <img src="logo.png" alt="Sonrisa Ideal - Clínica Odontológica" />
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#servicios">Servicios</a></li>
@@ -1387,7 +1373,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-content">
-    <div class="footer-logo">🦷 Sonrisa Ideal</div>
+    <div class="footer-logo"><img src="logo.png" alt="Sonrisa Ideal" /></div>
     <p>Clínica Odontológica Sonrisa Ideal &mdash; Calidad humana en tu atención dental<br>
     Vicuña: Arturo Prat 331, of. 2-6 &nbsp;|&nbsp; La Serena: Av. Amunátegui 489, of. 325<br>
     <a href="mailto:sonrisaideal01@gmail.com">sonrisaideal01@gmail.com</a><br><br>
