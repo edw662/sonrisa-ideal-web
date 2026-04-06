@@ -1147,7 +1147,7 @@
       </div>
       <a href="https://m.facebook.com/clinicasonrisaideal.cl/" target="_blank" rel="noopener" class="fb-badge">
         <i class="fab fa-facebook"></i>
-        <span class="fb-count">3.636</span>
+        <span class="fb-count" id="fbCount">0</span>
         <span class="fb-label">seguidores en Facebook</span>
       </a>
     </div>
@@ -1626,6 +1626,42 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Animación de conteo para el badge de Facebook
+  (function() {
+    const target = 3636;
+    const el = document.getElementById('fbCount');
+    const duration = 1500; // ms
+    let started = false;
+
+    function formatNum(n) {
+      return n.toLocaleString('es-CL');
+    }
+
+    function runCount() {
+      if (started) return;
+      started = true;
+      const start = performance.now();
+      function step(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // easeOutQuart para que acelere al inicio y frene al final
+        const ease = 1 - Math.pow(1 - progress, 4);
+        el.textContent = formatNum(Math.floor(ease * target));
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = formatNum(target);
+      }
+      requestAnimationFrame(step);
+    }
+
+    const fbObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        runCount();
+        fbObserver.disconnect();
+      }
+    }, { threshold: 0.5 });
+    fbObserver.observe(el);
+  })();
 
   // Form submit → WhatsApp redirect
   function submitForm(e) {
