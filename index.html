@@ -794,8 +794,9 @@
 
     .btn-maps {
       background: #fff;
-      color: #EA4335;
-      border: 2px solid #EA4335;
+      color: #3c3c3c;
+      border: 2px solid transparent;
+      background-clip: padding-box;
       padding: 9px 20px;
       border-radius: 50px;
       text-decoration: none;
@@ -804,11 +805,21 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      transition: background .2s, color .2s, transform .2s;
       flex: 1;
       justify-content: center;
+      position: relative;
+      box-shadow: 0 0 0 2.5px #EA4335, 0 0 0 3.5px #FBBC04, 0 0 0 4.5px #34A853, 0 0 0 5.5px #4285F4;
+      transition: box-shadow .2s, transform .2s;
     }
-    .btn-maps:hover { background: #EA4335; color: #fff; transform: translateY(-2px); }
+    .btn-maps .gmaps-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+    }
+    .btn-maps .gmaps-icon svg { width: 18px; height: 18px; }
+    .btn-maps:hover { transform: translateY(-2px); box-shadow: 0 0 0 2.5px #EA4335, 0 0 0 3.5px #FBBC04, 0 0 0 4.5px #34A853, 0 0 0 5.5px #4285F4, 0 6px 18px rgba(0,0,0,0.15); }
 
     /* ─── WHY US ─── */
     #nosotros { background: #fff; }
@@ -1323,7 +1334,7 @@
           <i class="fab fa-whatsapp"></i> WhatsApp Vicuña
         </a>
         <a href="https://maps.app.goo.gl/LEiHLjzqxeDfho8Q6" target="_blank" rel="noopener" class="btn-maps">
-          <i class="fas fa-map-location-dot"></i> Cómo llegar
+          <span class="gmaps-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#EA4335"/><circle cx="12" cy="9" r="2.5" fill="#fff"/></svg></span> Cómo llegar
         </a>
       </div>
     </div>
@@ -1368,7 +1379,7 @@
           <i class="fab fa-whatsapp"></i> WhatsApp La Serena
         </a>
         <a href="https://maps.app.goo.gl/xHJYmnbVGErVEwng9" target="_blank" rel="noopener" class="btn-maps">
-          <i class="fas fa-map-location-dot"></i> Cómo llegar
+          <span class="gmaps-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="#EA4335"/><circle cx="12" cy="9" r="2.5" fill="#fff"/></svg></span> Cómo llegar
         </a>
       </div>
     </div>
