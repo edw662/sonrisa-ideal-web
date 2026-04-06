@@ -430,55 +430,35 @@
     }
     .hero-stat span { font-size: 0.8rem; color: var(--gray); }
 
-    .fb-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 36px;
-      padding: 11px 22px;
-      min-width: 240px;
-      background: #1877F2;
-      color: #fff;
-      border-radius: 50px;
-      text-decoration: none;
-      font-size: 0.88rem;
-      font-weight: 600;
-      box-shadow: 0 4px 16px rgba(24,119,242,0.3);
-      transition: background .2s, transform .2s, box-shadow .2s;
+    .social-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
     }
-    .fb-badge:hover {
-      background: #1463cc;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(24,119,242,0.4);
-    }
-    .fb-badge i { font-size: 1.2rem; }
-    .fb-badge .fb-count { font-size: 1rem; font-weight: 800; }
-    .fb-badge .fb-label { font-size: 0.75rem; font-weight: 400; opacity: 0.9; }
 
-    .ig-badge {
+    .fb-badge, .ig-badge {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      margin-top: 10px;
-      padding: 11px 22px;
-      min-width: 240px;
-      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-      color: #fff;
+      gap: 9px;
+      padding: 10px 20px;
       border-radius: 50px;
       text-decoration: none;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 600;
-      box-shadow: 0 4px 16px rgba(220,39,67,0.3);
-      transition: opacity .2s, transform .2s, box-shadow .2s;
+      color: #fff;
+      transition: transform .2s, box-shadow .2s, opacity .2s;
     }
-    .ig-badge:hover {
-      opacity: 0.9;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(220,39,67,0.45);
-    }
-    .ig-badge i { font-size: 1.2rem; }
-    .ig-badge .ig-handle { font-size: 0.88rem; font-weight: 800; }
-    .ig-badge .ig-label { font-size: 0.75rem; font-weight: 400; opacity: 0.9; }
+    .fb-badge { background: #1877F2; box-shadow: 0 4px 14px rgba(24,119,242,0.3); }
+    .fb-badge:hover { background: #1463cc; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(24,119,242,0.4); }
+
+    .ig-badge { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); box-shadow: 0 4px 14px rgba(220,39,67,0.3); }
+    .ig-badge:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(220,39,67,0.45); }
+
+    .fb-badge i, .ig-badge i { font-size: 1.15rem; }
+    .fb-badge .fb-count { font-size: 0.95rem; font-weight: 800; }
+    .fb-badge .fb-label, .ig-badge .ig-label { font-size: 0.75rem; font-weight: 400; opacity: 0.9; }
+    .ig-badge .ig-handle { font-size: 0.85rem; font-weight: 700; }
 
     /* Hero Visual */
     .hero-visual {
@@ -1172,16 +1152,17 @@
         <div class="hero-stat"><strong>10+</strong><span>Servicios</span></div>
         <div class="hero-stat"><strong>100%</strong><span>Compromiso</span></div>
       </div>
-      <a href="https://m.facebook.com/clinicasonrisaideal.cl/" target="_blank" rel="noopener" class="fb-badge">
-        <i class="fab fa-facebook"></i>
-        <span class="fb-count" id="fbCount">0</span>
-        <span class="fb-label">seguidores en Facebook</span>
-      </a>
-      <a href="https://www.instagram.com/clinica.sonrisaideal" target="_blank" rel="noopener" class="ig-badge">
-        <i class="fab fa-instagram"></i>
-        <span class="ig-handle">@clinica.sonrisaideal</span>
-        <span class="ig-label">Síguenos en Instagram</span>
-      </a>
+      <div class="social-badges">
+        <a href="https://m.facebook.com/clinicasonrisaideal.cl/" target="_blank" rel="noopener" class="fb-badge">
+          <i class="fab fa-facebook"></i>
+          <span class="fb-count" id="fbCount">0</span>
+          <span class="fb-label">seguidores</span>
+        </a>
+        <a href="https://www.instagram.com/clinica.sonrisaideal" target="_blank" rel="noopener" class="ig-badge">
+          <i class="fab fa-instagram"></i>
+          <span class="ig-handle">@clinica.sonrisaideal</span>
+        </a>
+      </div>
     </div>
     <div class="hero-visual">
       <div class="hero-card-main">
