@@ -1762,7 +1762,61 @@
   // Año dinámico en footer
   document.getElementById('footerYear').textContent = new Date().getFullYear();
 
-  // Form submit → WhatsApp redirect
+  // Meta Pixel: solo eventos genéricos, sin nombre, teléfono, mensaje ni tratamiento.
+  function registrarEventoMeta(nombre, parametros = {}, personalizado = false) {
+    if (typeof fbq !== 'function') return;
+    fbq(personalizado ? 'trackCustom' : 'track', nombre, parametros);
+  }
+
+  function sucursalDesdeEnlace(enlace) {
+    const href = enlace.getAttribute('href') || '';
+    if (href.includes('56945984123')) return 'la_serena';
+    if (href.includes('56958242433')) return 'vicuna';
+
+    const tarjeta = enlace.closest('.branch-card');
+    const titulo = tarjeta?.querySelector('h3')?.textContent?.toLowerCase() || '';
+    if (titulo.includes('serena')) return 'la_serena';
+    if (titulo.includes('vicuña') || titulo.includes('vicuna')) return 'vicuna';
+    return 'no_definida';
+  }
+
+  // Contactos por WhatsApp.
+  document.querySelectorAll('a[href*="wa.me/"]').forEach(enlace => {
+    enlace.addEventListener('click', () => {
+      registrarEventoMeta('Contact', {
+        canal: 'whatsapp',
+        sucursal: sucursalDesdeEnlace(enlace)
+      });
+    });
+  });
+
+  // Llamadas telefónicas.
+  document.querySelectorAll('a[href^="tel:"]').forEach(enlace => {
+    enlace.addEventListener('click', () => {
+      registrarEventoMeta('Contact', {
+        canal: 'telefono',
+        sucursal: sucursalDesdeEnlace(enlace)
+      });
+    });
+  });
+
+  // Solicitudes de indicaciones en Google Maps.
+  document.querySelectorAll('a[href*="maps.app.goo.gl"]').forEach(enlace => {
+    enlace.addEventListener('click', () => {
+      registrarEventoMeta('FindLocation', {
+        sucursal: sucursalDesdeEnlace(enlace)
+      });
+    });
+  });
+
+  // El botón del menú solo lleva a la sección de contacto: no cuenta aún como cita.
+  document.querySelectorAll('a.nav-cta[href="#contacto"]').forEach(enlace => {
+    enlace.addEventListener('click', () => {
+      registrarEventoMeta('ClickAgendar', {}, true);
+    });
+  });
+
+  // Form submit → WhatsApp de la sucursal elegida.
   function submitForm(e) {
     e.preventDefault();
     const form = e.target;
@@ -1770,10 +1824,23 @@
     const phone = form.querySelector('input[type=tel]').value;
     const sucursal = form.querySelectorAll('select')[0].value;
     const servicio = form.querySelectorAll('select')[1].value;
+
+    const esLaSerena = sucursal === 'laserena';
+    const whatsapp = esLaSerena ? '56945984123' : '56958242433';
+    const sucursalTexto = esLaSerena
+      ? 'La Serena'
+      : (sucursal === 'vicuna' ? 'Vicuña' : 'a definir');
+
+    // Lead no incluye datos personales ni el servicio seleccionado.
+    registrarEventoMeta('Lead', {
+      canal: 'formulario_whatsapp',
+      sucursal: esLaSerena ? 'la_serena' : (sucursal === 'vicuna' ? 'vicuna' : 'no_definida')
+    });
+
     const msg = encodeURIComponent(
-      `Hola! Soy ${name}, mi teléfono es ${phone}. Me interesa: ${servicio || 'consulta general'} en sucursal ${sucursal || 'a definir'}.`
+      `Hola! Soy ${name}, mi teléfono es ${phone}. Me interesa: ${servicio || 'consulta general'} en sucursal ${sucursalTexto}.`
     );
-    window.open(`https://wa.me/56958242433?text=${msg}`, '_blank');
+    window.open(`https://wa.me/${whatsapp}?text=${msg}`, '_blank', 'noopener,noreferrer');
   }
 </script>
 </body>
