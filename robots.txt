@@ -30,3 +30,6 @@ User-agent: YouBot
 Allow: /
 
 Sitemap: https://clinicasonrisaideal.cl/sitemap.xml
+
+# Content Signals - preferencias de uso de contenido
+Content-Signal: ai-train=no, search=yes, ai-input=yes

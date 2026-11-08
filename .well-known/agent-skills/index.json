@@ -1,0 +1,23 @@
+{
+  "$schema": "https://agentskills.io/schema/v0.2.0/index.json",
+  "skills": [
+    {
+      "name": "agendar-hora",
+      "type": "action",
+      "description": "Agendar una hora en la Clínica Odontológica Sonrisa Ideal vía WhatsApp",
+      "url": "https://clinicasonrisaideal.cl/#contacto"
+    },
+    {
+      "name": "ver-servicios",
+      "type": "information",
+      "description": "Consultar servicios odontológicos disponibles y precios en Clínica Sonrisa Ideal",
+      "url": "https://clinicasonrisaideal.cl/#servicios"
+    },
+    {
+      "name": "ver-sucursales",
+      "type": "information",
+      "description": "Ver ubicaciones de las sucursales en Vicuña y La Serena",
+      "url": "https://clinicasonrisaideal.cl/#sucursales"
+    }
+  ]
+}
