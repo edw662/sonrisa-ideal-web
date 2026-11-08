@@ -1843,5 +1843,61 @@
     window.open(`https://wa.me/${whatsapp}?text=${msg}`, '_blank', 'noopener,noreferrer');
   }
 </script>
+
+<script>
+if (typeof document.modelContext !== 'undefined') {
+  document.modelContext.registerTool({
+    name: 'agendar-hora',
+    description: 'Agendar una hora en la Clínica Odontológica Sonrisa Ideal vía WhatsApp',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        servicio: { type: 'string', description: 'Servicio odontológico deseado' },
+        sucursal: { type: 'string', description: 'Sucursal: Vicuña o La Serena' }
+      }
+    },
+    execute: async ({ servicio, sucursal }) => {
+      const msg = encodeURIComponent(`Hola, quiero agendar una hora${servicio ? ' para ' + servicio : ''}${sucursal ? ' en ' + sucursal : ''}.`);
+      window.open('https://wa.me/56900000000?text=' + msg, '_blank');
+      return { success: true };
+    }
+  });
+
+  document.modelContext.registerTool({
+    name: 'ver-servicios',
+    description: 'Ver los servicios y precios de la Clínica Odontológica Sonrisa Ideal',
+    inputSchema: { type: 'object', properties: {} },
+    execute: async () => {
+      return {
+        servicios: [
+          { nombre: 'Evaluación dental', precio: '$5.000 – $10.000' },
+          { nombre: 'Limpieza dental', precio: 'desde $25.000' },
+          { nombre: 'Tapaduras', precio: 'desde $30.000' },
+          { nombre: 'Extracción simple', precio: 'desde $30.000' },
+          { nombre: 'Tratamiento de conducto', precio: '$200.000 – $260.000' },
+          { nombre: 'Prótesis dental', precio: 'desde $100.000' },
+          { nombre: 'Prótesis flexible', precio: '$200.000 – $320.000' },
+          { nombre: 'Ortodoncia (instalación)', precio: '$200.000' },
+          { nombre: 'Controles ortodoncia', precio: '$45.000' }
+        ]
+      };
+    }
+  });
+
+  document.modelContext.registerTool({
+    name: 'ver-sucursales',
+    description: 'Ver las sucursales de la Clínica Odontológica Sonrisa Ideal',
+    inputSchema: { type: 'object', properties: {} },
+    execute: async () => {
+      return {
+        sucursales: [
+          { nombre: 'Vicuña', region: 'Región de Coquimbo', pais: 'Chile' },
+          { nombre: 'La Serena', region: 'Región de Coquimbo', pais: 'Chile' }
+        ]
+      };
+    }
+  });
+}
+</script>
 </body>
 </html>

@@ -1,0 +1,13 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://clinicasonrisaideal.cl/",
+      "service-doc": [
+        { "href": "https://clinicasonrisaideal.cl/llms.txt", "type": "text/plain" }
+      ],
+      "describedby": [
+        { "href": "https://clinicasonrisaideal.cl/.well-known/ai-catalog.json", "type": "application/json" }
+      ]
+    }
+  ]
+}

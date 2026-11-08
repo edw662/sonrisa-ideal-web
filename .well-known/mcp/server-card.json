@@ -1,0 +1,14 @@
+{
+  "serverInfo": {
+    "name": "Clínica Odontológica Sonrisa Ideal",
+    "version": "1.0.0",
+    "description": "Clínica dental con sucursales en Vicuña y La Serena, Región de Coquimbo, Chile."
+  },
+  "transport": {
+    "type": "http",
+    "endpoint": "https://clinicasonrisaideal.cl"
+  },
+  "capabilities": {
+    "resources": true
+  }
+}
