@@ -517,17 +517,6 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-12px); }
     }
-    .tooth-anim { display:flex; justify-content:center; margin-bottom:8px; }
-    .tooth-body { animation: toothPulse 2.5s ease-in-out infinite; transform-origin: 50% 50%; }
-    .tooth-shine { animation: shineFade 2.5s ease-in-out infinite; }
-    @keyframes toothPulse {
-      0%,100% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(240,124,26,0.3)); }
-      50% { transform: scale(1.06); filter: drop-shadow(0 0 12px rgba(240,124,26,0.7)); }
-    }
-    @keyframes shineFade {
-      0%,100% { opacity: 0.3; }
-      50% { opacity: 1; }
-    }
     .hero-card-main .big-tooth {
       font-size: 80px;
       display: block;
@@ -1246,23 +1235,7 @@
     </div>
     <div class="hero-visual">
       <div class="hero-card-main">
-        <div class="tooth-anim">
-          <svg viewBox="0 0 100 110" width="110" height="110" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="tg" cx="40%" cy="30%" r="60%">
-                <stop offset="0%" stop-color="#fff9f0"/>
-                <stop offset="100%" stop-color="#F07C1A" stop-opacity="0.15"/>
-              </radialGradient>
-              <filter id="glow">
-                <feGaussianBlur stdDeviation="2" result="blur"/>
-                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-              </filter>
-            </defs>
-            <path class="tooth-body" d="M50,8 C38,8 28,14 24,24 C20,34 20,46 22,54 C24,62 26,72 28,80 C30,88 34,98 38,98 C42,98 44,88 46,78 C47,72 48,66 50,66 C52,66 53,72 54,78 C56,88 58,98 62,98 C66,98 70,88 72,80 C74,72 76,62 78,54 C80,46 80,34 76,24 C72,14 62,8 50,8 Z"
-              fill="url(#tg)" stroke="#F07C1A" stroke-width="2.5" filter="url(#glow)"/>
-            <path class="tooth-shine" d="M36,18 C32,22 30,28 30,34" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
-          </svg>
-        </div>
+        <span class="big-tooth">🦷</span>
         <h3>Clínica Odontológica</h3>
         <p>Sonrisa Ideal</p>
       </div>
